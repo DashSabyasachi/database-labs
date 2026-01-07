@@ -1,0 +1,269 @@
+1️⃣ SELECT & FROM – Practice Questions
+
+Write a query to display all columns from the employee table.
+
+Display only emp_name and salary of all employees.
+
+Display distinct departments from the employee table.
+
+Display employee names along with their department and city.
+
+2️⃣ WHERE Clause – Practice Questions
+
+Display all employees who work in the IT department.
+
+Find employees whose salary is greater than 50,000.
+
+Display employees who live in Bangalore.
+
+Find employees whose department is HR and salary > 40,000.
+
+Display employees whose salary is between 30,000 and 60,000.
+
+Find employees whose name starts with ‘A’.
+
+3️⃣ ORDER BY Clause – Practice Questions
+
+Display all employees ordered by salary in ascending order.
+
+Display employee names and salary ordered by salary descending.
+
+Display employees ordered by department first, then salary (high to low).
+
+Display employees from IT department ordered by emp_name alphabetically.
+
+4️⃣ GROUP BY Clause – Practice Questions
+
+Count the number of employees in each department.
+
+Find the average salary per department.
+
+Find the maximum salary in each department.
+
+Find the minimum salary per city.
+
+Count how many employees are there in each city.
+
+5️⃣ HAVING Clause – Practice Questions
+
+Display departments having more than 3 employees.
+
+Display departments where the average salary is greater than 50,000.
+
+Display cities having at least 2 employees.
+
+Find departments where the total salary is more than 1,00,000.
+
+6️⃣ Mixed Practice (Most Important ⭐)
+
+Display department and employee count only for IT and HR departments.
+
+Display departments with more than 2 employees and order them by employee count descending.
+
+Display city-wise average salary only for cities with avg salary > 40,000.
+
+Display departments whose maximum salary is greater than 70,000.
+
+Find the highest paid employee.
+
+Find the second highest salary (try without LIMIT if possible).
+
+🎯 Challenge (Optional but Recommended)
+
+Write a query to find employees earning more than the average salary.
+
+Display departments where all employees earn more than 50,000.
+
+Find employees who work in the same department as ‘Ritika’.
+
+
+
+ANSWERS:-
+...........
+use emp;
+show tables;
+1
+select * from employee; 
+2
+select emp_name , salary from employee;
+3
+select distinct department from employee;
+4
+select emp_name, department , city from employee;
+5
+select * 
+from employee
+where department = 'IT';
+6
+select *
+from employee 
+where salary >50000;
+7
+select *
+from employee 
+where city = 'Bangalore';
+8
+select *
+from employee 
+where department = 'HR' and salary >40000;
+9
+select *
+from employee
+where salary between 30000 and 60000;
+10
+select *
+from employee
+where emp_name like 'A%';
+11
+select *
+from employee
+order by salary asc;
+12
+select emp_name , salary
+from employee
+order by salary desc;
+13
+select * 
+from employee
+order by department desc , salary desc;
+14
+select * 
+from employee
+where department = "IT"
+order by emp_name asc;
+15
+select department, count(*) as number_of_employees
+from employee
+group by department;
+16
+select department, avg(salary) as average_sal
+from employee
+group by department;
+-- for Round values
+select department,round(avg(salary)) as average_sal
+from employee
+group by department;
+17
+select department , max(salary) as maximum_sal
+from employee
+group by department;
+
+-- 18
+select city , min(salary) as minimum_salary
+from employee
+group by city;
+
+-- 19
+select city , count(*) as employees
+from employee
+group by city;
+
+-- 20
+select department
+from employee
+group by department
+having count(*) > 2 ;
+
+-- 21
+select department
+from employee
+group by department
+having avg(salary) > 50000;
+
+
+-- 22
+select city 
+from employee
+group by city
+having count(*) >=2 ;
+
+
+
+-- 23
+select department 
+from employee
+group by department
+having sum(salary) > 100000;
+
+
+24
+select department, count(*) as employee_count
+from employee
+where department in ('IT', 'HR')
+group by department;
+
+25
+select department, count(*) as total_employee
+from employee
+group by department
+having count(*) >= 2
+order by total_employee desc;
+
+26
+select city, avg(salary) as average_salary
+from employee
+group by city
+having avg(salary) > 50000;
+
+27
+select department, max(salary) as max_salary
+from employee
+group by department
+having max(salary) > 70000;
+
+28
+select * 
+from employee
+order by salary desc
+limit 1;
+-- by using subquery
+select *
+from employee
+where salary = (select max(salary) from employee); 
+
+-- 29
+select distinct salary
+from employee
+order by salary desc
+limit 1
+offset 1;
+
+-- by using subquery
+select max(salary) as second_highest_sal
+from employee
+where salary < (select max(salary) from employee);
+
+-- another way
+select max(salary) as second_highest_sal
+from employee 
+where salary in 
+(select salary from employee
+where salary != 
+(select max(salary) from employee));
+
+-- 30
+select * from employee
+where salary 
+> (select avg(salary) from employee);
+
+-- 31
+select department , sum(salary)
+from employee
+group by department
+having sum(salary) > 100000;
+
+-- 32
+select emp_name
+from employee
+where department in
+(select department 
+from employee
+where emp_name = "Ritika");
+
+
+ 
+select * from employee;
+
+
+
+
