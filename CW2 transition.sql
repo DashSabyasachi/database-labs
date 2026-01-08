@@ -46,13 +46,31 @@ from orders
 group by category;
 
 
+select product, avg(price)
+from orders
+group by product;
 
 
+select city , count(*) as number_of_order
+from orders
+group by city;
 
 
+select city , sum(quantity * price)
+from orders
+group by city 
+having sum(quantity * price) > 100000;
 
 
+select category, sum(quantity)
+from orders
+group by category
+having sum(quantity) > 5;
 
 
+select category , max(price)
+from orders
+group by category;
+ 
 
 
