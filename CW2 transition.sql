@@ -36,3 +36,23 @@ from orders
 where category = "Furniture";
 
 
+select city , sum(quantity * price) as total_sales_per_city
+from orders 
+group by city;
+
+
+select category, sum(quantity) 
+from orders
+group by category;
+
+
+
+
+
+
+
+
+
+
+
+
