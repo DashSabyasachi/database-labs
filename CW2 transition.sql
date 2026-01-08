@@ -73,4 +73,9 @@ from orders
 group by category;
  
 
+select category , min(price)
+from orders
+group by category;
+
+
 
