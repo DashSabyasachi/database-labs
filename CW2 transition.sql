@@ -78,4 +78,6 @@ from orders
 group by category;
 
 
-
+select month(order_date), sum(price * quantity)
+from orders
+group by month(order_date);
