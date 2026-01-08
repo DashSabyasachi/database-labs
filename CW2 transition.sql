@@ -81,3 +81,14 @@ group by category;
 select month(order_date), sum(price * quantity)
 from orders
 group by month(order_date);
+
+
+select product , avg(price)
+from orders
+group by product
+having avg(price) > 20000; 
+
+
+
+
+
