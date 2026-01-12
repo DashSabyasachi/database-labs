@@ -56,15 +56,14 @@ select employees.emp_name
 from employees
 left join departments
 on employees.dept_id = departments.dept_id;
--- or
-select emp_name
-from employees;
 
 
-select d.dept_name
-from departments as d ;
--- or
-select 
+
+select departments.dept_name
+from employees
+left join departments
+on employees.dept_id = departments.dept_id;
+
 
 
 
