@@ -64,7 +64,19 @@ from employees
 left join departments
 on employees.dept_id = departments.dept_id;
 
+select employees.emp_name,departments.dept_name
+from employees
+inner join departments
+on employees.dept_id = departments.dept_id
+where dept_name= "IT";
 
+
+
+select employees.emp_name
+from employees
+left join departments
+on employees.dept_id = departments.dept_id
+where departments.dept_id is null;
 
 
 
