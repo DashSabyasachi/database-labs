@@ -48,47 +48,55 @@ on emp.dept_id = dept.dept_id;
 
 -- answers
 -- 1
-select e.emp_name, d.dept_name
-from employees as e
-inner join departments as d
+select e.emp_name , d.dept_name
+from emp e
+inner join dept d
 on e.dept_id = d.dept_id;
 
 
 -- 2
-select employees.emp_name 
-from employees
-left join departments
-on employees.dept_id = departments.dept_id;
+select e.emp_name, d.dept_name
+from emp e
+left join dept d
+on e.dept_id = d.dept_id;
 
 
 -- 3
-select employees.emp_name, departments.dept_name
-from employees
-right join departments
-on employees.dept_id = departments.dept_id;
+select e.emp_name, d.dept_name
+from emp e
+right join dept d
+on e.dept_id = d.dept_id;
 
 
 -- 4
-select employees.emp_name,departments.dept_name
-from employees
-inner join departments
-on employees.dept_id = departments.dept_id
-where dept_name= "IT";
+select e. emp_name, d.dept_name
+from emp e
+inner join dept d
+on e.dept_id = d.dept_id
+where dept_name = "IT";
 
 
 -- 5
-select employees.emp_name
-from employees
-left join departments
-on employees.dept_id = departments.dept_id
-where departments.dept_id is null;
-
-
--- 6 Show total number of employees in each department.
-select d.dept_name, count(e.emp_id) from employees e
-right join departments d
+select e.emp_name, d.dept_name
+from emp e
+left join dept d
 on e.dept_id = d.dept_id
-group by d.dept_name;
+where dept_name is null;
+
+
+-- 6
+select d.dept_name , count(emp_name) as total_emp
+from emp e
+right join dept d
+on e.dept_id = d.dept_id
+group by dept_name;
+
+-- 7
+select d.dept_name
+from dept d
+left join emp e
+on d.dept_id = e.dept_id
+where emp_name is null;
 
 
 
