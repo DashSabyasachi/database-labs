@@ -107,7 +107,12 @@ on e.dept_id = d.dept_id
 order by dept_name;
 
 
-
+-- 9
+select e.emp_name, d.dept_name
+from emp e
+inner join dept d
+on e.dept_id = d.dept_id
+where dept_name = "IT" or dept_name = "HR";
 
 
 
