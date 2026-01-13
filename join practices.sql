@@ -115,7 +115,13 @@ on e.dept_id = d.dept_id
 where dept_name = "IT" or dept_name = "HR";
 
 
-
+-- 10
+select d.dept_name, count(e.emp_id) as total_emp
+from dept d
+inner join emp e
+on e.dept_id = d.dept_id
+group by dept_name
+having total_emp > 1;
 
 
 
