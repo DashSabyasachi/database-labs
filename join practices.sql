@@ -99,6 +99,12 @@ on d.dept_id = e.dept_id
 where emp_name is null;
 
 
+-- 8 
+select e.emp_name, d.dept_name
+from emp e
+right join dept d
+on e.dept_id = d.dept_id
+order by dept_name;
 
 
 
