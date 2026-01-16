@@ -40,7 +40,17 @@ on t1.manager_id = t2.emp_id;
 -- Q14. Find the latest order date for each customer.
 
 
+-- 1
+SELECT c.customer_name, o.order_amount
+FROM customers c
+INNER JOIN orders o
+ON c.customer_id = o.customer_id;
 
-
+-- 2
+select c.customer_name, o.*
+from customers c
+inner join orders o
+on c.customer_id = o.customer_id
+where customer_name = "Rahul";
 
 
