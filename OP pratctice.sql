@@ -94,3 +94,56 @@ select *
 from employees
 where emp_id <= 105;
 
+-- 11. Find employees working in IT department and salary > 60000.
+select *
+from employees
+where salary > 60000 and department = "IT";
+
+-- 12. Display employees who are in IT or HR department.
+select *
+from employees
+where department in ("IT" , "HR");
+
+-- 13. Find employees who are not from Mumbai.
+select *
+from employees
+where city != "Mumbai";
+
+
+-- 14. Find employees whose salary is greater than 50000 and less than 80000.
+select *
+from employees
+where salary > 50000 and salary < 80000;
+
+
+-- 15. Display employees who are not in IT department.
+select *
+from employees
+where department <> "IT";
+
+
+-- 16. Find employees whose department is IT, HR, Finance.
+select * 
+from employees
+where department in ("IT", "HR" , "Finance");
+
+-- 17. Display employees whose salary is between 50000 and 70000.
+select *
+ from employees
+ where salary between 50000 and 70000;
+ 
+ 
+-- 18. Find employees whose name starts with 'A'.
+select *
+from employees
+where emp_name like "A%";
+
+-- 19. Display employees whose city ends with 'i'.
+select * 
+ from employees
+  where city like "%i";
+  
+-- 20. Find employees whose department is NULL.
+select * 
+ from employees
+  where department is null;
