@@ -107,11 +107,31 @@ where salary > (select max(salary)
 				from employees 
                 where emp_name = "Amit");                
 
-(select salary
+-- 7.Find employees who work in the same department as Rina.
+select emp_name, department 
+from employees
+where department in (select department from employees where emp_name = "Rina");
+-- (Here i am using "in" onperator just because if Rina named some other employees are there from other department, it can fetch all these employees from all departments also.) 
+
+
+-- 8.Find employees whose salary is equal to the highest salary in IT department.
+select * 
+from employees 
+where salary = (select max(salary)
+				from employees
+                where department = "IT");
+                
+
+-- 9.Find employees who earn less than the lowest salary in HR.
+select * 
+from employees 
+where salary < (select min(salary)
 				from employees 
-                where emp_name = "Amit");
+				where department = "HR");
 
-
-
-
-
+-- 10.Find employees who work in departments located in Mumbai.
+select * 
+from employees 
+where city in (select city
+			  from employees
+              where city = "Mumbai");
