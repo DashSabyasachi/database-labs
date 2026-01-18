@@ -52,14 +52,64 @@ where salary = (select max(salary)
 -- 24. Find employees who earn exactly the same salary as at least one other employee.
 -- 25. Find employees who earn more than all employees in Admin department.
 
+-- ANSWERS
+-- 1.Find employees who earn more than the average salary of all employees.
+select emp_name, salary
+from employees
+where salary > (select avg(salary)from employees);
 
+-- 2.Find employees who earn less than the average salary.
+select emp_name,salary
+from employees 
+where salary < (select avg(salary) from employees);
 
+-- 3.Find employees who earn the maximum salary.
+select * 
+from employees
+where salary = (select max(salary) from employees);
 
+-- (also we can solve this by not using sub query)
+select * from employees
+order by salary desc
+limit 1;
 
+-- 4.Find employees who earn the minimum salary.
+select *
+ from employees 
+ where salary = (select min(salary) from employees);
 
+-- (also we can solve this by not using sub query)
+select * from employees
+order by salary asc
+limit 1;
 
+-- 5.Find the second highest salary.
+select emp_name, salary
+from employees
+where salary = (select max(salary) 
+				from employees
+                where salary < (select max(salary) 
+							   from employees)); 
+                               
+                      
+-- (it is a database specific answer)
+select emp_name, salary
+from employees
+where salary = (select salary
+				from employees 
+				order by salary desc 
+                limit 1 offset 1); 
+                
+-- 6.Find employees who earn more than Amit.
+select emp_name , salary 
+from employees 
+where salary > (select max(salary) 
+				from employees 
+                where emp_name = "Amit");                
 
-
+(select salary
+				from employees 
+                where emp_name = "Amit");
 
 
 
