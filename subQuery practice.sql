@@ -135,3 +135,59 @@ from employees
 where city in (select city
 			  from employees
               where city = "Mumbai");
+
+-- 11.Find employees whose salary is greater than ANY salary in HR department.
+select * 
+from employees 
+where salary > any  (select salary 
+					from employees 
+                    where department = "HR");
+                    
+-- 12.Find employees whose salary is greater than ALL salaries in IT department.
+select * 
+from employees 
+where salary > all  (select salary 
+					from employees 
+                    where department = "IT");    
+                    
+-- 13.Find employees who belong to departments having more than one employee.
+-- select count(emp_id), department
+-- from employees
+
+
+
+
+-- ...........................................................................................................................
+-- find all the employees who work in any department, that have atleast one employee earning more then 60000.
+select * 
+from employees 
+where department in (select department 
+					from employees
+					where salary > 60000);
+
+
+-- find employees whose salary is greater then any salary in the HR department				
+select * 
+from employees 
+where salary > any (select salary 
+					from employees 
+                    where department = "HR");
+            
+        
+-- Find employees who belong to departments having more than two employee.
+select *
+from employees
+where department in	(select department 
+					from employees
+					group by department 
+					having count(emp_id) > 2);
+                    
+-- find employees whose salary is less then all salary in IT department.
+select *
+from employees 
+where salary < all (select salary
+					from employees
+					where department = "IT");
+
+
+
