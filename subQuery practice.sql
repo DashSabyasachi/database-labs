@@ -151,8 +151,39 @@ where salary > all  (select salary
                     where department = "IT");    
                     
 -- 13.Find employees who belong to departments having more than one employee.
--- select count(emp_id), department
--- from employees
+select * 
+from employees 
+where department in (select department
+					from employees
+					group by department
+					having count(emp_id) > 1);
+                    
+-- 14.Find employees who earn more than the average salary of their department.
+select * 
+from employees
+where salary > any (select avg(salary)
+					from employees
+					group by department);
+                    
+-- 15.Find employees who earn the highest salary in their department.
+select * 
+from employees
+where salary in (select max(salary)
+					from employees
+					group by department);
+
+-- 16. Find employees who earn the lowest salary in their department.
+select * 
+from employees
+where salary in (select min(salary)
+				from employees
+				group by department);
+                
+
+
+
+
+
 
 
 
