@@ -227,6 +227,19 @@ where salary < (select max(salary)
 				from employees);
 
 
+-- find Second highest salary by window function [dense_rank()]
+select salary
+from ( select salary,
+		dense_rank() over (order by salary desc) as rnk
+	   from employees) t
+where rnk = 2;
+
+
+-- find second highest using limit and offset
+select distinct salary
+from employees
+order by salary desc
+limit 1 offset 1;
 
 
 
