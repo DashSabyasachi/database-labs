@@ -220,5 +220,15 @@ where salary < all (select salary
 					from employees
 					where department = "IT");
 
+-- find Second highest salary by subquery
+select max(salary) 
+from employees 
+where salary < (select max(salary) 
+				from employees);
+
+
+
+
+
 
 
