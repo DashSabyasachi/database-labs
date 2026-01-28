@@ -23,11 +23,25 @@ from employee
 order by salary asc
 limit 3 offset 0;
 
-select * from employee;
+
 -- 2 Find the nth highest salary using window function
 select salary,
 	dense_rank() over(order by salary desc) as nth_sal
 from employee;
 
 
-                
+--  Find duplicate records
+
+-- (Duplicate based on a COLUMN (partial duplicate)) 
+select Salary , count(*)
+ from employee
+ group by salary
+ having count(*) >1;
+
+-- Duplicate ROWS (entire record is same)
+select emp_name, salary ,count(*)
+from employee
+group by emp_name, salary
+having count(*) >1;
+
+select * from employee;
