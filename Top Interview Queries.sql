@@ -11,4 +11,21 @@ select max(salary) as Second_HighSal
 from employee
 where salary < (select max(salary) 
 				from employee);
+-- (by using limit and offset) 
+select salary
+from employee
+order by salary desc
+limit 1 offset 1;
 
+-- find top 3 lowest salary)
+select distinct salary 
+from employee
+order by salary asc
+limit 3 offset 0;
+
+
+
+
+
+
+                
